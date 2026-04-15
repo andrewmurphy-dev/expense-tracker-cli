@@ -14,17 +14,15 @@ def add_expenses(expenses):
         print("error, cannot be blank, please try again!")
         return
 
-
+    if not product_amount.isdigit():
+        print("error, invalid amount, please try again!")
+        return
 
     amount = int(product_amount)
     expenses[product_name] = amount
     print("your expenses have been added")
     print(expenses)
     return
-
-
-
-
 
 
 
