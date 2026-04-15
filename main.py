@@ -41,3 +41,4 @@ def cli_expenses():
 cli_expenses()
 
 
+print("thank you for your time, goodbye!")
