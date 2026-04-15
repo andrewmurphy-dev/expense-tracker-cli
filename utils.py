@@ -14,10 +14,13 @@ def add_expenses(expenses):
         print("error, cannot be blank, please try again!")
         return
 
-    amount = int(product_amount)
 
+
+    amount = int(product_amount)
     expenses[product_name] = amount
-    print("your expenses have been added", expenses)
+    print("your expenses have been added")
+    print(expenses)
+    return
 
 
 
