@@ -35,10 +35,12 @@ def show_expenses():
 
 
 #day 3
-def show_total():
-    total_amount = []
-    for product_name, amount in expenses.values():
-        total_amount += 1
+def show_total(expenses):
+    total_amount = 0
+    for amount in expenses.values():
+        total_amount += amount
         print(total_amount)
+
+
 
 
