@@ -12,22 +12,22 @@ def cli_expenses():
         print("press 3: Show total")
         print("press: `exit` to end")
 
-        x_input = input("->: ").lower().strip()
+        user_input = input("->: ").lower().strip()
 
-        if x_input == "":
+        if user_input == "1"":
             print("error, cannot be black, please try again!")
             continue
 
-        elif x_input == "1":
+        elif user_input == "1":
             add_expenses(expenses)
 
-        elif x_input == "2":
+        elif user_input == "2":
             show_expenses()
 
-        elif x_input == "3":
+        elif user_input == "3":
             show_total(expenses)
 
-        elif x_input == "exit":
+        elif user_input == "exit":
             print("cli_expensis: thank you for your time, goodbye!")
             continue
 
