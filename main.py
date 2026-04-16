@@ -14,8 +14,8 @@ def cli_expenses():
 
         user_input = input("->: ").lower().strip()
 
-        if user_input == "1"":
-            print("error, cannot be black, please try again!")
+        if user_input == "1":
+            print("error, cannot be blank, please try again!")
             continue
 
         elif user_input == "1":

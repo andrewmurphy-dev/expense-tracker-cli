@@ -12,6 +12,7 @@ def add_expenses(expenses):
     product_amount = input(f"enter the amount of {product_name}: ")
     if  product_amount == "":
         print("error, cannot be blank, please try again!")
+        add_expenses(expenses)
         return
 
     if not product_amount.isdigit():
