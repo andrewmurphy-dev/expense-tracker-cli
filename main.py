@@ -16,6 +16,7 @@ def cli_expenses():
 
         if x_input == "":
             print("error, cannot be black, please try again!")
+            continue
 
         elif x_input == "1":
             add_expenses(expenses)
@@ -32,7 +33,7 @@ def cli_expenses():
 
         else:
             print("error, start again!")
-            return
+
 
 
 cli_expenses()
