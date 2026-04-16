@@ -27,11 +27,11 @@ def add_expenses(expenses):
 
 
 
-
-
 def show_expenses():
+    print("welcome to show expenses section")
     for product_name, amount in expenses.items():
         print(product_name, amount)
+
 
 
 #day 3
@@ -39,7 +39,8 @@ def show_total(expenses):
     total_amount = 0
     for amount in expenses.values():
         total_amount += amount
-        print(total_amount)
+
+    print(total_amount)
 
 
 
