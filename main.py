@@ -38,4 +38,8 @@ def cli_expenses():
 
 
 cli_expenses()
+add_expenses(expenses)
+show_expenses()
+show_total(expenses)
+
 
