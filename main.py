@@ -14,7 +14,7 @@ def cli_expenses():
 
         user_input = input("->: ").lower().strip()
 
-        if user_input == "1":
+        if user_input == "":
             print("error, cannot be blank, please try again!")
             continue
 
