@@ -33,6 +33,7 @@ def cli_expenses():
 
         else:
             print("error, start again!")
+            continue
 
 
 
