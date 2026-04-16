@@ -29,7 +29,7 @@ def cli_expenses():
 
         elif x_input == "exit":
             print("cli_expensis: thank you for your time, goodbye!")
-            break
+            continue
 
         else:
             print("error, start again!")
