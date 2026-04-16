@@ -17,6 +17,7 @@ def add_expenses(expenses):
 
     if not product_amount.isdigit():
         print("error, invalid amount, please try again!")
+        add_expenses(expenses)
         return
 
     amount = int(product_amount)
