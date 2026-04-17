@@ -38,8 +38,9 @@ def show_expenses():
 
 #day 3
 def show_total(expenses):
-    total_amount = 0
+    print("welcome to show total section")
 
+    total_amount = 0
     for amount in expenses.values():
         total_amount += amount
 
@@ -48,6 +49,7 @@ def show_total(expenses):
 
 result = show_total(expenses)
 print(result)
+
 
 
 
