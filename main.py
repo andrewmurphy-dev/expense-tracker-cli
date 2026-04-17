@@ -1,5 +1,6 @@
 from storage import expenses
-from utils import add_expenses, show_expenses,show_total
+from utils import add_expenses, show_expenses, show_total, delete_expenses
+
 
 def cli_expenses():
 
@@ -10,6 +11,7 @@ def cli_expenses():
         print("press 1: Add expenses")
         print("press 2: Show expenses")
         print("press 3: Show total")
+        print("press 4: to delete expenses")
         print("press: `exit` to end")
 
         user_input = input("->: ").lower().strip()
@@ -26,6 +28,10 @@ def cli_expenses():
 
         elif user_input == "3":
             show_total(expenses)
+
+        elif user_input == "4":
+            delete_expenses(expenses)
+
 
         elif user_input == "exit":
             print("cli_expensis: thank you for your time, goodbye!")
