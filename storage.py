@@ -1,0 +1,3 @@
+expenses = {
+    "coffee": 4,
+}
