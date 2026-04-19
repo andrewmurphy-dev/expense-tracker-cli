@@ -32,7 +32,9 @@ def add_expenses(expenses):
 def show_expenses():
     print("welcome to show expenses section")
     for product_name, amount in expenses.items():
-        print(product_name, amount)
+        print("product name", product_name)
+        
+        
 
 
 
