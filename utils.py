@@ -91,8 +91,7 @@ def delete_expenses(expenses):
 
             else:
                 print("deletion cancelled")
-                continue
-
+                
 
 
 
