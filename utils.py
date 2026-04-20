@@ -33,7 +33,7 @@ def show_expenses():
     print("welcome to show expenses section")
     for product_name, amount in expenses.items():
         print("product name", product_name)
-        
+        print("size", amount)
         
 
 
