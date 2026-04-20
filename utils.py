@@ -3,7 +3,6 @@ from storage import expenses
 
 
 def add_expenses(expenses):
-    print("welcome to add expenses section")
     product_name = input("enter the name of the product: ").lower().strip()
     if product_name == "":
         print("error, cannot be blank, please try again!")
