@@ -104,12 +104,15 @@ python-cli-auth-system/
 
 - Stores user data in a dictionary
 
+## 💾 Data on disk (Week 10 practice)
+
+- Expenses are stored in `expenses_data.txt` (plain text, one line: `name|amount`) using `with open(...)` in `storage.py`.
+- The file is listed in `.gitignore` so your local totals are not pushed by default.
+
 ## ⚠️ Known Limitations
 
-- Data is not persistent (lost when program exits)
-- Passwords are stored in plain text
-- No authentication sessions
-- No database integration
+- No cloud sync (data is only the local `expenses_data.txt` on your machine)
+- No database integration (file-based storage only)
 
 ## 🔧 Future Improvements
 

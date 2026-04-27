@@ -44,5 +44,5 @@ def cli_expenses():
 
 
 if __name__ == "__main__":
-    menu_home()
+    cli_expenses()
 
