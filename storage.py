@@ -1,10 +1,6 @@
 
 expenses = {}
 
-def save_expenses():
-    with open("expenses_data.txt", "w", encoding="utf-8") as f:
-        for product_name, amount in expenses.items():
-            f.write(f"{product_name}{amount}\n")
 
 
     
