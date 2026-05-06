@@ -1,6 +1,7 @@
 from utils import add_expenses, show_expenses, show_total, delete_expenses
 
 def cli_expenses():
+    expenses = load_expenses()
 
     while True:
         print("welcome to Command Line Interface: User expenses")
