@@ -37,6 +37,3 @@ def load_expenses():
 
 save_expenses()
 
-loaded_data = load_expenses()
-print(loaded_data)
-
