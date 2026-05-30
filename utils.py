@@ -21,6 +21,19 @@ def add_expenses(expenses):
     print("Your expense has been added.")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 def show_expenses(expenses):
     print()
     print("Show expenses")
