@@ -1,0 +1,70 @@
+But while building/testing, yes, you as the backend dev will manually make HTTP requests using /docs, Postman, curl, or a small Python requests.post() script to prove your endpoint works.
+
+
+what does timeout do?
+
+wait a maximum of 10 secods for the server to response , if it takes longer stop and throw up an errror ! 
+
+
+
+
+    try:
+        response = request.post(f"{BASE_URL}/expenses",
+                                
+                                json = {
+                                    "name": product_name,
+                                    "price": price
+                                },
+
+                                timeout=10
+                                
+                                )
+
+
+
+
+
+
+
+
+1. request.method (
+
+
+
+2. f"{BASE_URL}/expenses"
+
+3. , json = {
+    
+}
+
+4. timeout=10
+
+
+)
+
+
+
+what is raise for status ??
+
+
+if the server returned an error status code , raise a python error ! 
+
+
+
+
+
+  response.raise_for_status()
+
+        data = response.json()
+
+
+
+
+
+so cool thing is we can make a general function that fetches the get json data ! 
+
+and we just call it in show expenses , add expenses! 
+
+
+
+
