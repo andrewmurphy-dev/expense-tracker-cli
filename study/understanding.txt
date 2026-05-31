@@ -1,0 +1,130 @@
+so the big question is how do we incorporate an api into this project! 
+
+so we have 3 options 
+
+
+1. CLI calls someone elses API 
+2. CLI calls your own local FASTAPI 
+3. Turn the whole project into a proper backend + cli client 
+
+
+
+so for this project we are doing .2 
+
+your storage should not become fastapi 
+just your api uses it  !
+
+
+
+#so below is very important you need to understand this ! 
+
+
+so in utils.py 
+
+it depends on the user for input 
+
+for example 
+
+input()
+print()
+
+this depends on the terminal! 
+
+but this API endpoint 
+
+
+POST method --> this is an HTTP request method to send data to a web server 
+to create or update a source!
+
+
+
+so 
+ app.post("/expenses")
+ def add_expense(expense: Basemodel):
+
+ this is saying recieve data from an HTTP request body! 
+
+ how does this HTTP request body make the data !?
+
+ the client makes the data ! 
+
+ for example 
+
+ a user wants to but things from a shop! 
+
+ user clicks 
+ coffee x 1 
+ sandwish x 2 
+
+ the client builds the data ! 
+
+ User clicks items
+        ↓
+Client stores selected items in memory
+        ↓
+Client builds a dictionary/object/list
+        ↓
+Client sends it as JSON in the HTTP body
+        ↓
+API receives it
+
+
+
+
+below is very important ! 
+
+User
+↓
+clicks buttons
+
+Frontend
+↓
+collects the clicked items
+builds JSON request body
+sends HTTP request
+
+Backend
+↓
+receives request body
+validates it
+checks prices/products
+creates the order
+returns response
+
+Frontend creates the request body.
+Backend receives the request body.
+
+so u define what shape data you want. !
+
+
+
+so in this project u wil need to think as a front end dev
+and you need to think as a backend dev ! 
+
+
+
+the cli is acting like your frnt end client!
+
+
+
+
+
+
+
+
+
+so backend !
+
+
+add a new user 
+
+
+
+show items ! 
+
+show expenses {total}
+
+
+
+
+delete expenses ! 
