@@ -1,117 +1,179 @@
-def add_expenses(expenses):
+import requests
+from requests.exceptions import RequestException, JSONDecodeError
+
+BASE_URL = "http://127.0.0.1:8000"
+
+
+def add_expenses():
     product_name = input("Enter the name of the product: ").lower().strip()
 
     if product_name == "":
-        print("Error: cannot be blank. Please try again.")
+        print("Name cannot be blank!")
+        return
+    
+    price_text = input("input the amount of the product price: ")
+
+    if price_text == "":
+        print("price should not be blank!")
+        return 
+    
+    try:
+        price = int(price_text)
+
+    except ValueError:
+        print("Error must be a number!")
+
+    if price <= 0:
+        print("error price must be greater than 0!")
+
+    try:
+        response = requests.post(f"{BASE_URL}/expenses",
+                                json = {
+                                    "name": product_name,
+                                    "price": price
+                                },
+
+                                timeout=10
+                                
+                                )
+        
+        response.raise_for_status()
+
+        data = response.json()
+
+    except RequestException as error:
+        print(f"API REQUEST FAILED: {error}")
+        return 
+
+
+    except JSONDecodeError:
+        print("error: API did not return valud JSON!")
+        return 
+        
+    print(data["message"])
+
+
+
+
+
+
+
+
+API_URL = "http://127.0.0.1:8000"
+
+def fetch_expenses_get_api():
+
+    try:
+        response = requests.get(API_URL, timeout=10)
+        response.raise_for_status()
+        expenses = response.json()
+
+
+    except requests.exceptions.ConnectionError:
+        print("error: connection to derver was not viable!")
         return
 
-    product_amount = input(f"Enter amount of {product_name}: ").strip()
-
-    if product_amount == "":
-        print("Error: cannot be blank. Please try again.")
+    except requests.exceptions.Timeout:
+        print("error: server connection exceeded timeout!")
         return
 
-    if not product_amount.isdigit():
-        print("Error: invalid amount. Please try again.")
+    except requests.exceptions.HTTPerror as error:
+        print(f"error: server has returned a {error}")
         return
 
-    amount = int(product_amount)
+    except requests.exceptions.RequestException:
+        print("error: server request failed!")
 
-    expenses[product_name] = amount
-    print("Your expense has been added.")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def show_expenses(expenses):
-    print()
-    print("Show expenses")
-    print("-" * 30)
-
-    if not expenses:
-        print("No expenses found.")
+    except ValueError:
+        print("server is not in valid JSON format!")
         return
+     
 
-    for product_name, amount in expenses.items():
-        print("Product name:", product_name)
-        print("Amount:", amount)
-        print("-" * 30)
+    if not isinstance(expenses, dict):
+        print("error: expected expenses to be a dictionary!")
+        return None
 
-
-def show_total(expenses):
-    print()
-    print("Total expenses")
-    print("-" * 30)
-
-    total_amount = 0
-
-    for amount in expenses.values():
-        total_amount += amount
-
-    print(f"Total: {total_amount}")
-    return total_amount
+    
+    return expenses
 
 
-def delete_expenses(expenses):
-    while True:
-        print()
-        print("Welcome to delete expenses section")
-        print("Type the following to choose your option")
-        print("Press 1: Delete one expense")
-        print("Press 2: Delete all expenses")
-        print("Press exit: Go back to main menu")
 
-        delete_option = input("->: ").lower().strip()
 
-        if delete_option == "":
-            print("Error: invalid option. Please try again.")
-            continue
 
-        elif delete_option == "1":
-            product_name = input("Enter the name of the product: ").lower().strip()
+    
 
-            if product_name == "":
-                print("Error: product name cannot be blank.")
-                continue
+def show_expenses():
+    expenses = fetch_expenses_get_api()
 
-            if product_name in expenses:
-                del expenses[product_name]
-                print(f"{product_name}'s expense has been deleted.")
-                break
-            else:
-                print(f"{product_name} was not found.")
-                continue
+    if expenses is None:
+        return 
+    
 
-        elif delete_option == "2":
-            print("Type 'yes' to confirm deleting all expenses.")
+    if len(expenses) == 0:
+        print("no expenses found")
+        return
+    
 
-            confirm = input("Enter your choice: ").lower().strip()
+    for name, price in expenses.items():
+        print(f"Name: {name}")
+        print(f"Price, {price}")
+        print("-" ** 30)
 
-            if confirm == "yes":
-                expenses.clear()
-                print("All expenses have been deleted.")
-                break
-            else:
-                print("Deletion cancelled.")
-                break
 
-        elif delete_option == "exit":
-            print("Returning to main menu.")
-            break
 
-        else:
-            print("Error: invalid option. Please try again.")
+def show_total_expenses():
+    expenses = fetch_expenses_get_api()
+
+    if expenses is None:
+        print("Expenses not found!")
+        return
+    
+    if len(expenses) == 0:
+        print("no expenses found")
+        return
+    
+    total = 0
+
+    for price in expenses.values:
+        total += price 
+
+
+    print(f"Total expenses: {total}")
+
+
+
+
+
+
+
+
+
+
+
+def delete_expenses():
+
+    expense_name = input("enter the name of the product you wish to delete: ")
+
+    if expense_name == "":
+        print("product cannot be blank!")
+        return 
+    
+    try: 
+        response = requests.delete(f"{API_URL}/expenses/{expense_name}, timeout=10")
+        response.raise_for_status
+        data = response.json()
+
+    except RequestException as error:
+        print(f"API REQUEST FAILED: {error}")
+        return 
+
+
+    except JSONDecodeError:
+        print("error: API did not return valud JSON!")
+        return 
+        
+    print(data["message"])
+
 
 
 
