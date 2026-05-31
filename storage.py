@@ -35,5 +35,4 @@ def load_expenses():
 
 
 
-save_expenses()
 

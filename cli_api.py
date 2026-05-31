@@ -3,25 +3,27 @@ from pydantic import BaseModel, Field
 from storage import load_expenses, save_expenses  
 
 
-app = FastAPI
+app = FastAPI()
 
-#make base model ! 
+
 
 class correctstructure(BaseModel):
     name: str = Field(Min_length=1)
     price: int = Field(gt=0)
 
 
-#we need to have seed data ! 
-#you actually do not need to add seed data ! 
-#because you can save it in storage ! 
-#remmever json.dump
 
 expenses = {
     "coffee": 300,
     "train": 220,
     "food": 800
 }
+
+
+
+@app.get("/")
+def home():
+    return {"Message": "FastAPI is currently running"}
 
 
 
@@ -34,8 +36,6 @@ def get_expenses():
 
 
 
-
-#add a new expenses !
 
 @app.post("/expenses")
 def add_expenses(expense: correctstructure):
